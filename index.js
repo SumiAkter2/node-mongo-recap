@@ -26,6 +26,13 @@ async function run() {
       const result = await collection.insertOne(newUser);
       res.send(result);
     });
+
+    app.get("/user", async (req, res) => {
+      const query = {};
+      const result = collection.find(query);
+      const user = await result.toArray();
+      res.send(user);
+    });
   } finally {
   }
 }
